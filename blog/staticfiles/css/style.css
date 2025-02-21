@@ -1,0 +1,24 @@
+.navbar-dark {
+  background-color: #212529; /* Siyah arka plan */
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+  color: #f8f9fa; /* Açık gri metin */
+  transition: color 0.3s ease;
+}
+
+.navbar-dark .nav-link:hover {
+  color: #adb5bd; /* Hover sırasında daha açık gri */
+}
+
+.navbar-dark .btn-outline-light {
+  border-color: #f8f9fa; /* Açık gri kenar */
+  color: #f8f9fa;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-dark .btn-outline-light:hover {
+  background-color: #f8f9fa; /* Buton hover'da beyaz arka plan */
+  color: #212529; /* Siyah yazı rengi */
+}

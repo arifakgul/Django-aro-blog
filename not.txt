@@ -1,0 +1,85 @@
+Merhaba! Ben Arif Emin Akgül, yazılım mühendisi öğrencisiyim ve teknolojiye olan ilgim her geçen gün artıyor. 
+        Python ve C# ile oyun geliştirme ve web uygulamaları yapma konusunda deneyimim var. Kendimi sürekli 
+        geliştirmeyi seviyorum ve yeni teknolojilerle çalışmaktan keyif alıyorum.
+
+
+
+        <!-- Eğitim ve Deneyim Bölümü -->
+        <section id="education-experience" class="my-5">
+          <h3>Eğitim ve Deneyim</h3>
+          <ul>
+            <li>Yazılım Mühendisliği 1.sınıf, İstanbul Aydın Üniversitesi</li>
+            <li>Python ve C# ile Oyun Geliştirme Projeleri ve Web Geliştirme</li>
+            <li>Django ve Flask ile Web Geliştirme</li>
+          </ul>
+        </section>
+    
+        <!-- Yetenekler Bölümü -->
+        <section id="skills" class="my-5">
+          <h3>Yeteneklerim</h3>
+          <ul>
+            <li>Python, C#, C, HTML, CSS</li>
+            <li>Unity, Django, Flask</li>
+            <li>Git, SQL</li>
+          </ul>
+        </section>
+    
+        <!-- Hobiler ve İlgi Alanları Bölümü -->
+        <section id="hobbies" class="my-5">
+          <h3>Hobilerim</h3>
+          <ul>
+            <li>Elektrikli araçlar hakkında araştırma yapmak</li>
+            <li>Oyun geliştirme projeleri oluşturmak</li>
+            <li>Futbol, Masa Tenisi, Video Oyunları</li>
+          </ul>
+        </section>
+
+
+
+
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="Kullanıcı Adı:")
+    password = forms.CharField(label="Parola:", widget=forms.PasswordInput)
+
+
+<div class="container" style="margin-top: 100px; display: flex; justify-content: center;">
+    <div class="row justify-content-center" style="width: 100%; display: flex; justify-content: center;">
+        <div class="col-md-6" style="max-width: 500px;">
+            <div class="card shadow-lg" style="border-radius: 20px; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); background-color: #f8f9fa;">
+                <div class="card-body" style="padding: 50px;">
+                    <h3 class="text-center" style="font-size: 36px; color: #495057; margin-bottom: 30px;">Giriş Yap</h3>
+                    <hr style="border-top: 2px solid #ccc; margin-bottom: 30px;">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block" style="width: 100%; padding: 14px; font-size: 18px; background-color: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease; margin-top: 10pxpx;">Giriş Yap</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Hesabınız yok mu? <a href="/user/register">Kaydol</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 100px; display: flex; justify-content: center;">
+    <div class="row justify-content-center" style="width: 100%; display: flex; justify-content: center;">
+        <div class="col-md-6" style="max-width: 500px;"> <!-- Kutunun genişliğini arttırdım -->
+            <div class="card shadow-lg" style="border-radius: 20px; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); background-color: #f8f9fa;">
+                <div class="card-body" style="padding: 50px;"> <!-- Padding'i arttırdım -->
+                    <h3 class="text-center" style="font-size: 36px; color: #495057; margin-bottom: 30px;">Kayıt Ol</h3> <!-- Başlık boyutunu arttırdım -->
+                    <hr style="border-top: 2px solid #ccc; margin-bottom: 30px;">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary btn-block" style="width: 100%; padding: 14px; font-size: 18px; background-color: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease; margin-top: 25px;">Kayıt Ol</button> <!-- Buton boyutunu arttırdım -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

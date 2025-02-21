@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+<div style="max-width: 800px; margin: auto; padding: 20px; font-family: Arial, sans-serif; color: #1D1D1F; text-align: center;">
+
+    <!-- Profil Fotoğrafı -->
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="{% static 'img/profil.jpeg' %}" 
+             style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; 
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);" 
+             alt="Profil Fotoğrafı">
+        <h2 style="margin-top: 15px; font-size: 24px; font-weight: 600;">Arif Emin Akgül</h2>
+        <p style="font-size: 16px; color: #555;">Yazılım Mühendisliği Öğrencisi | Oyun ve Web Geliştirici</p>
+    </div>
+
+    <!-- Kişisel Bilgiler Kartı -->
+    <div style="background: white; padding: 20px; border-radius: 15px; 
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); margin-top: 20px; text-align: left;">
+        <p style="font-size: 16px; line-height: 1.5; color: #333;">
+            👋 Merhaba! Ben Arif, yazılım dünyasına büyük bir tutkuyla bağlıyım.  
+            Python ve C# kullanarak oyun geliştirme ve web projeleri yapıyorum.  
+            Teknolojiyi takip etmeyi, kendimi sürekli geliştirmeyi ve yeni şeyler keşfetmeyi seviyorum. 🚀
+        </p>
+
+        <!-- Eğitim -->
+        <h4 style="margin-top: 15px; font-size: 18px; font-weight: 600;">🎓 Eğitim</h4>
+        <p style="font-size: 15px; color: #555;">Yazılım Mühendisliği 1. sınıf, İstanbul Aydın Üniversitesi</p>
+
+        <!-- Yetenekler -->
+        <h4 style="margin-top: 15px; font-size: 18px; font-weight: 600;">🛠️ Yetenekler</h4>
+        <p style="font-size: 15px; color: #555;">
+            Python, C#, C, HTML, CSS, SQL<br>
+            Unity, Django, Flask, Git
+        </p>
+
+        <!-- Hobiler -->
+        <h4 style="margin-top: 15px; font-size: 18px; font-weight: 600;">🎮 Hobiler</h4>
+        <p style="font-size: 15px; color: #555;">
+            ⚡ Elektrikli araç araştırmaları<br>
+            🎮 Oyun geliştirme projeleri<br>
+            ⚽ Futbol, Masa Tenisi, Video Oyunları
+        </p>
+    </div>
+
+</div>
+{% endblock body %}

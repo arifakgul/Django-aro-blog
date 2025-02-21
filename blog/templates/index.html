@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+    <div class="card shadow-lg p-4" style="max-width: 1090px; width: 100%; border-radius: 20px;">
+        <h1 class="text-center mb-4" style="font-family: 'Roboto', sans-serif; color: #333;">Hoş Geldiniz!</h1>
+        <p class="text-center mb-4" style="color: #777; font-size: 1.1rem;">
+            Bu bir blog sayfasıdır. Giriş yaparak yeni makaleler yazabilir veya mevcut makaleleri keşfedebilirsiniz. Haydi, keşfetmeye başlayın!
+        </p>
+        <div class="text-center">
+            <a href="/articles" class="btn btn-dark btn-lg px-4 py-2" style="background-color: #212529; border: none; border-radius: 30px; font-size: 1.2rem; color: #fff; text-decoration: none;">
+                Makaleleri Keşfet
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock body %}

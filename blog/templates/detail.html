@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Post content-->
+        <article>
+            <!-- Post header-->
+            <header class="mb-4">
+                <!-- Post title-->
+                <h3 class="fw-bolder mb-1">{{article.title}}</h3>
+                <!-- Post meta content-->
+                <div class="d-flex">
+                    <div class="flex-shrink-0"><img class="rounded-circle" src="{% static "img/author.webp" %}" width="50" height="50" alt="..." /></div>
+                    <div class="ms-3">
+                        <div class="fw-bold">{{article.author.username}}</div>
+                        {{article.created_date}}
+                    </div>
+                </div>
+                <hr>
+            </header>
+            <!-- Preview image figure-->
+             {% if article.article_image %}
+             <figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure> 
+             {% endif %}
+            <!-- Post content-->
+            <section class="mb-5">
+                <p>{{article.content|safe}}</p>      
+                <form action="{% url 'article:like_article' id=article.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" style="border: none; background: none; cursor: pointer; font-size: 18px; color: red;">
+                        {% if user in article.likes.all %}
+                            <i class="fa-solid fa-heart"></i> <!-- Dolu Kalp -->
+                        {% else %}
+                            <i class="fa-regular fa-heart"></i> <!-- Boş Kalp -->
+                        {% endif %}
+                    </button>
+                    <span>({{ article.likes.count }})</span>
+                </form>
+            </section>
+        </article>
+        <hr>
+        <section class="mb-5">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <!-- Comment form-->
+                    <form class="mb-4" method="post" action="{% url "article:comment" article.id %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">İsim:</label>
+                            <input name="comment_author" type="text" class="form-control" id="formGroupExampleInput" placeholder="İsminiz..." value="{{request.user.username}}">
+                        </div>
+                        <label for="formGroupExampleInput">İçerik:</label>
+                        <textarea name="comment_content" class="form-control" rows="3" placeholder="Tartışmaya katılın ve yorum bırakın!"></textarea>
+                        <button type="submit" class="btn btn-primary">Ekle</button>
+                    </form>
+                    {% if comments %}
+                    {% for comment in comments %}
+                    <div class="d-flex" style="margin-bottom:20px">
+                        <div class="flex-shrink-0"><img class="rounded-circle" src="{% static "img/yorum.webp" %}" width="50" height="50" alt="..." /></div>
+                        <div class="ms-3">
+                            <div class="fw-bold">{{comment.comment_author}}</div>
+                            {{comment.comment_content}}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="alert alert-danger">
+                        Herhangi bir yorum bulunmuyor...
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock body %}

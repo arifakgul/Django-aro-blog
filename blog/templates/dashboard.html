@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div style="max-width: 900px; margin: auto; padding: 20px; font-family: Arial, sans-serif; color: #1D1D1F;">
+
+    <h2 style="text-align: center; font-size: 24px; font-weight: 600; margin-bottom: 15px;">Kontrol Paneli</h2>
+
+    <p style="text-align: center; font-size: 16px; color: #555;">
+        Hoşgeldin, <span style="font-weight: 600;">{{request.user.username}}</span>
+    </p>
+
+    <div style="display: flex; justify-content: center; margin: 20px 0;">
+        <a href="/articles/addarticle" 
+           style="background: #007AFF; color: white; padding: 14px 22px; border-radius: 12px; text-decoration: none; font-size: 16px; font-weight: 500; box-shadow: 0 3px 12px rgba(0, 122, 255, 0.3); transition: 0.3s;">
+           ➕ Makale Ekle
+        </a>
+    </div>
+
+    {% if articles %}
+    <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <table style="width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden;">
+            <thead style="background: #F5F5F7; text-align: left;">
+                <tr>
+                    <th style="padding: 18px; font-size: 16px;">ID</th>
+                    <th style="padding: 18px; font-size: 16px;">Başlık</th>
+                    <th style="padding: 18px; font-size: 16px;">Yazar</th>
+                    <th style="padding: 18px; font-size: 16px;">Tarih</th>
+                    <th style="padding: 18px; text-align: right;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                <tr style="background: {% if forloop.counter|divisibleby:2 %} #FAFAFA {% else %} white {% endif %};">
+                    <td style="padding: 18px; font-size: 15px;">{{article.id}}</td>
+                    <td style="padding: 18px; font-size: 15px;">
+                        <a href="/articles/article/{{article.id}}" 
+                           style="color: #007AFF; text-decoration: none; font-weight: 500;">
+                            {{article.title}}
+                        </a>
+                    </td>
+                    <td style="padding: 18px; font-size: 15px;">{{article.author.username}}</td>
+                    <td style="padding: 18px; font-size: 15px;">{{article.created_date}}</td>
+                    <td style="padding: 18px; text-align: right;">
+                      <div style="display: flex; gap: 10px;">
+                          <a href="/articles/update/{{article.id}}" 
+                             style="background: #F5F5F7; color: #007AFF; padding: 10px 16px; 
+                                    border-radius: 10px; text-decoration: none; 
+                                    font-size: 14px; font-weight: 500; 
+                                    transition: 0.3s; display: flex; 
+                                    align-items: center; justify-content: center; 
+                                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                             ✏️ <span style="margin-left: 5px;">Güncelle</span>
+                          </a>
+                          <a href="/articles/delete/{{article.id}}" 
+                             style="background: #FF453A; color: white; padding: 10px 16px; 
+                                    border-radius: 10px; text-decoration: none; 
+                                    font-size: 14px; font-weight: 500; 
+                                    transition: 0.3s; display: flex; 
+                                    align-items: center; justify-content: center; 
+                                    box-shadow: 0 2px 8px rgba(255, 69, 58, 0.3);">
+                             🗑️ <span style="margin-left: 5px;">Sil</span>
+                          </a>
+                      </div>
+                    </td>                  
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div style="text-align: center; background: #F5F5F7; padding: 25px; border-radius: 12px; margin-top: 30px;">
+        <p style="font-size: 16px; color: #555;">Henüz herhangi bir makaleniz bulunmuyor...</p>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock body %}
