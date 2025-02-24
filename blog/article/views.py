@@ -68,13 +68,12 @@ def addComment(request, id):
     article = get_object_or_404(Article, id=id)
 
     if request.method == "POST":
-        comment_author = request.POST.get("comment_author")
         comment_content = request.POST.get("comment_content")
 
-        newComment = Comment(article=article, comment_author=comment_author, comment_content=comment_content)
+        newComment = Comment(article=article, comment_author=request.user.username, comment_content=comment_content)
         newComment.save()
 
-    return redirect(reverse("article:detail", kwargs={"id":id})) 
+    return redirect(reverse("article:detail", kwargs={"id": id})) 
 @login_required(login_url="user:login")
 def like_article(request, id):
     article = get_object_or_404(Article, id=id)
